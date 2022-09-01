@@ -30,11 +30,11 @@ public class DentistaDAOH2 implements IDao<Dentista> {
     public Dentista salvar(Dentista dentista) throws SQLException {
         log.info("Abrindo conexão");
         String SQLInsert = String.format("INSERT INTO dentista (nome,email,numMatricula,atendeConvenio)"+
-                "VALUES ('%s','%s')",dentista.getNome(),dentista.getEmail(),dentista.getNumMatricula(),dentista.getAtendeConvenio());
+                "VALUES ('%s','%s',%d,'%s')",dentista.getNome(),dentista.getEmail(),dentista.getNumMatricula(),dentista.getAtendeConvenio());
         Connection connection = null;
         try{
             log.info("Sanvando o dentista: "+dentista.getNome());
-            configuracaoJDBC = new ConfiguracaoJDBC("org.h2.Driver","jdbc:h2:~/dentista;" +
+            configuracaoJDBC = new ConfiguracaoJDBC("org.h2.Driver","jdbc:h2:~/dentista" +
                     "INIT=RUNSCRIPT FROM 'create.sql'","sa","");
             connection = configuracaoJDBC.getConnection();
             Statement statement = connection.createStatement();
@@ -64,7 +64,7 @@ public class DentistaDAOH2 implements IDao<Dentista> {
         List<Dentista> dentistas = new ArrayList<>();
         try{
 
-            configuracaoJDBC = new ConfiguracaoJDBC("org.h2.Driver","jdbc:h2:~/dentista;" +
+            configuracaoJDBC = new ConfiguracaoJDBC("org.h2.Driver","jdbc:h2:~/dentista" +
                     "INIT=RUNSCRIPT FROM 'create.sql'","sa","");
             connection = configuracaoJDBC.getConnection();
             stmt = connection.createStatement();
@@ -93,7 +93,7 @@ public class DentistaDAOH2 implements IDao<Dentista> {
         String SQLDelete = String.format("DELETE FROM dentista where id = %s",id);
         try{
 
-            configuracaoJDBC = new ConfiguracaoJDBC("org.h2.Driver","jdbc:h2:~/dentista;INIT=RUNSCRIPT FROM 'create.sql'","sa","");
+            configuracaoJDBC = new ConfiguracaoJDBC("org.h2.Driver","jdbc:h2:~/dentista INIT=RUNSCRIPT FROM 'create.sql'","sa","");
             connection = configuracaoJDBC.getConnection();
             log.debug("Excluindo dentista por id: "+id);
             stmt = connection.createStatement();
@@ -108,7 +108,7 @@ public class DentistaDAOH2 implements IDao<Dentista> {
     }
 
     private Dentista criarObjetoProduto(ResultSet resultSet) throws SQLException{
-        Integer id = resultSet.getInt("ID");
+        Integer id = resultSet.getInt("id");
         String nome = resultSet.getString("nome");
         String email = resultSet.getString("email");
         Integer numMatricula = resultSet.getInt("numMatricula");

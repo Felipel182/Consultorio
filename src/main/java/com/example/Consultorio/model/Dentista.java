@@ -12,10 +12,10 @@ import lombok.Setter;
 
 public class Dentista {
 
-    private int id;
+    private Integer id;
     private String nome;
     private String email;
-    private int numMatricula;
+    private Integer numMatricula;
     private String atendeConvenio;
 
 }

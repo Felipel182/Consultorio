@@ -9,24 +9,31 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/dentista")
+//@RequestMapping("/dentista")
 public class DentistaController {
 
     @Autowired
-    DentistaService service;
+    DentistaService dentistaService;
 
-    @PostMapping
-    public Dentista salvaDentista(@RequestBody Dentista dentista) throws SQLException{
-        return service.salvar(dentista);
+    @PostMapping("/dentista/adicionar")
+    public String salvar(@RequestBody Dentista dentista) throws SQLException{
+        return dentistaService.salvar(dentista);
     }
 
-    @GetMapping
+    @GetMapping("/dentistas")
     public List<Dentista> buscarTodos() throws SQLException{
-        return service.buscarTodos();
+        return dentistaService.buscarTodos();
     }
 
-        @DeleteMapping
+    @DeleteMapping("/dentista/excluir/{id}")
     public void excluir(@RequestParam("id") int id) throws SQLException{
-        service.excluir(id);
+        dentistaService.excluir(id);
     }
+
+    @PutMapping("/dentista/alterar")
+    public String updateDentista(Dentista dentista) throws SQLException {
+        return dentistaService.updateDentista(dentista);
+    }
+
+
 }

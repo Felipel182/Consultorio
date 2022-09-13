@@ -10,21 +10,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DentistaService {
+public interface DentistaService<T> {
 
-    @Autowired
-    IDao<Dentista> dentistaDaoH2;
 
-    public Dentista salvar(Dentista dentista) throws SQLException{
-        return dentistaDaoH2.salvar(dentista);
-    }
+    public String salvar(Dentista dentista) throws SQLException;
 
-    public List<Dentista> buscarTodos() throws SQLException{
-        return dentistaDaoH2.buscarTodos();
-    }
+    public List<Dentista> buscarTodos() throws SQLException;
 
-   public void excluir(int id) throws SQLException{
-        dentistaDaoH2.excluir(id);
-    }
+    public String updateDentista(Dentista dentista) throws SQLException;
+
+   public String excluir(Integer id) throws SQLException;
 
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ConsultaServiceImpl implements ConsultaService<ConsultaModel> {
 
-    private ConsultaRepository consultaRepository;
+    private final ConsultaRepository consultaRepository;
 
     public ConsultaServiceImpl(ConsultaRepository consultaRepository) {
         this.consultaRepository = consultaRepository;

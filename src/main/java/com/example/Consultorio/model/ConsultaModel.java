@@ -13,7 +13,7 @@ public class ConsultaModel {
     @Id
     @SequenceGenerator(name = "consulta_sequence", sequenceName = "consulta_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_generator")
-    private Integer consultaID;
+    private Integer id;
 
     private Date dataConsulta;
     private Date horaConsulta;
@@ -36,13 +36,13 @@ public class ConsultaModel {
     public ConsultaModel() {
     }
 
-    public Integer getConsultaID() {
-        return consultaID;
+    public Integer getId() {
+        return id;
     }
 
-    public void setConsultaID(Integer consultaID) {
-        this.consultaID = consultaID;
-    }
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
 
     public Date getDataConsulta() {
         return dataConsulta;

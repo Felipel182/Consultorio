@@ -3,10 +3,11 @@ package com.example.Consultorio.service.impl;
 import com.example.Consultorio.model.ConsultaModel;
 import com.example.Consultorio.repository.ConsultaRepository;
 import com.example.Consultorio.service.ConsultaService;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
-
+@Service
 public class ConsultaServiceImpl implements ConsultaService<ConsultaModel> {
 
     private final ConsultaRepository consultaRepository;
@@ -31,7 +32,7 @@ public class ConsultaServiceImpl implements ConsultaService<ConsultaModel> {
 
     @Override
     public String updateConsulta(ConsultaModel c) throws SQLException {
-        if (c != null && consultaRepository.findById(c.getConsultaID()).isPresent()){
+        if (c != null && consultaRepository.findById(c.getId()).isPresent()){
             consultaRepository.saveAndFlush(c);
             return "Consulta atualizada";
         }

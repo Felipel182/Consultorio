@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/dentista")
+@RequestMapping("/dentista")
 public class DentistaController {
 
     @Autowired
@@ -20,7 +20,7 @@ public class DentistaController {
         this.dentistaService = dentistaService;
     }
 
-    @PostMapping("/dentista/adicionar")
+    @PostMapping("/adicionar")
     public String salvar(@RequestBody Dentista dentista) throws SQLException{
         return dentistaService.salvar(dentista);
     }
@@ -30,12 +30,12 @@ public class DentistaController {
         return dentistaService.buscarTodos();
     }
 
-    @DeleteMapping("/dentista/excluir/{id}")
+    @DeleteMapping("/excluir/{id}")
     public void excluir(@RequestParam("id") int id) throws SQLException{
         dentistaService.excluir(id);
     }
 
-    @PutMapping("/dentista/alterar")
+    @PutMapping("/alterar")
     public String updateDentista(Dentista dentista) throws SQLException {
         return dentistaService.updateDentista(dentista);
     }

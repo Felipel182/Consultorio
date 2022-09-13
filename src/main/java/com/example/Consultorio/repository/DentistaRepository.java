@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface DentistaRepository extends JpaRepository<Dentista, Integer>{
 
-    @Query("SELECT Dentista FROM Dentista WHERE id = %d")
+    @Query(value = "SELECT Dentista FROM Dentista WHERE id = ?1", nativeQuery = true)
     Optional<Dentista> findDentistaByName(String name);
 
 }

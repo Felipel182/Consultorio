@@ -1,24 +1,24 @@
 package com.example.Consultorio.controller;
 
 import com.example.Consultorio.model.ConsultaModel;
-import com.example.Consultorio.service.ConsultaService;
 import com.example.Consultorio.service.impl.ConsultaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
-@RestController
-public class ConsultaController {
 
-    @Autowired
-    ConsultaServiceImpl consultaService;
+@RestController
+@RequestMapping("/consulta")
+public class ConsultaController {
+//    @Autowired
+    private final ConsultaServiceImpl consultaService;
 
     public ConsultaController(ConsultaServiceImpl consultaService) {
         this.consultaService = consultaService;
     }
 
-    @PostMapping("/consulta/adicionar")
+    @PostMapping("/adicionar")
     public String salvar(@RequestBody ConsultaModel c) throws SQLException {
         return consultaService.salvar(c);
     }
@@ -28,12 +28,12 @@ public class ConsultaController {
         return consultaService.buscarTodos();
     }
 
-    @DeleteMapping("/consulta/excluir/{id}")
+    @DeleteMapping("/excluir/{id}")
     public void excluir(@RequestParam("id") int id) throws SQLException{
         consultaService.excluir(id);
     }
 
-    @PutMapping("/consulta/alterar")
+    @PutMapping("/alterar")
     public String updateDentista(ConsultaModel c) throws SQLException {
         return consultaService.updateConsulta(c);
     }

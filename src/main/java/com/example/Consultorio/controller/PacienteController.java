@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.List;
 @RestController
+@RequestMapping("/paciente")
 public class PacienteController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class PacienteController {
         this.pacienteService = pacienteService;
     }
 
-    @PostMapping("/paciente/adicionar")
+    @PostMapping("/adicionar")
     public String salvar(@RequestBody PacienteModel p) throws SQLException {
         return pacienteService.salvar(p);
     }
@@ -29,12 +30,12 @@ public class PacienteController {
         return pacienteService.buscarTodos();
     }
 
-    @DeleteMapping("/paciente/excluir/{id}")
+    @DeleteMapping("/excluir/{id}")
     public void excluir(@RequestParam("id") int id) throws SQLException{
         pacienteService.excluir(id);
     }
 
-    @PutMapping("/paciente/alterar")
+    @PutMapping("/alterar")
     public String updateDentista(PacienteModel p) throws SQLException {
         return pacienteService.updatePaciente(p);
     }

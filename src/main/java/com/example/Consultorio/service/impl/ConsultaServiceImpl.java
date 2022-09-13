@@ -1,10 +1,8 @@
 package com.example.Consultorio.service.impl;
 
 import com.example.Consultorio.model.ConsultaModel;
-import com.example.Consultorio.model.Dentista;
 import com.example.Consultorio.repository.ConsultaRepository;
 import com.example.Consultorio.service.ConsultaService;
-import com.example.Consultorio.service.DentistaService;
 
 import java.sql.SQLException;
 import java.util.List;

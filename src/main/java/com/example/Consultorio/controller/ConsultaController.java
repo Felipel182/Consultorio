@@ -2,16 +2,21 @@ package com.example.Consultorio.controller;
 
 import com.example.Consultorio.model.ConsultaModel;
 import com.example.Consultorio.service.ConsultaService;
+import com.example.Consultorio.service.impl.ConsultaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
-
+@RestController
 public class ConsultaController {
 
     @Autowired
-    ConsultaService consultaService;
+    ConsultaServiceImpl consultaService;
+
+    public ConsultaController(ConsultaServiceImpl consultaService) {
+        this.consultaService = consultaService;
+    }
 
     @PostMapping("/consulta/adicionar")
     public String salvar(@RequestBody ConsultaModel c) throws SQLException {

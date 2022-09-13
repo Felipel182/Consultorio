@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface PacienteRepository extends JpaRepository<PacienteModel, Integer> {
 
-    @Query("SELECT Paciente p FROM Paciente WHERE d.id = ?1")
-    Optional<Dentista> findPacienteByNameByName(String name);
+    @Query("SELECT Paciente p FROM Paciente WHERE d.id = %d")
+    Optional<PacienteModel> findPacienteByName(String name);
 
 }

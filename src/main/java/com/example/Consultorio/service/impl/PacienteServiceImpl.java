@@ -1,8 +1,6 @@
 package com.example.Consultorio.service.impl;
 
-import com.example.Consultorio.model.Dentista;
 import com.example.Consultorio.model.PacienteModel;
-import com.example.Consultorio.repository.DentistaRepository;
 import com.example.Consultorio.repository.PacienteRepository;
 import com.example.Consultorio.service.PacienteService;
 

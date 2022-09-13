@@ -1,7 +1,6 @@
 package com.example.Consultorio.model;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,9 +8,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Consulta")
-@Getter
-@Setter
-@NoArgsConstructor
 public class ConsultaModel {
 
     @Id
@@ -34,6 +30,49 @@ public class ConsultaModel {
         this.dataConsulta = dataConsulta;
         this.horaConsulta = horaConsulta;
         this.pacienteModel = pacienteModel;
+        this.dentista = dentista;
+    }
+
+    public ConsultaModel() {
+    }
+
+    public Integer getConsultaID() {
+        return consultaID;
+    }
+
+    public void setConsultaID(Integer consultaID) {
+        this.consultaID = consultaID;
+    }
+
+    public Date getDataConsulta() {
+        return dataConsulta;
+    }
+
+    public void setDataConsulta(Date dataConsulta) {
+        this.dataConsulta = dataConsulta;
+    }
+
+    public Date getHoraConsulta() {
+        return horaConsulta;
+    }
+
+    public void setHoraConsulta(Date horaConsulta) {
+        this.horaConsulta = horaConsulta;
+    }
+
+    public PacienteModel getPacienteModel() {
+        return pacienteModel;
+    }
+
+    public void setPacienteModel(PacienteModel pacienteModel) {
+        this.pacienteModel = pacienteModel;
+    }
+
+    public Dentista getDentista() {
+        return dentista;
+    }
+
+    public void setDentista(Dentista dentista) {
         this.dentista = dentista;
     }
 }

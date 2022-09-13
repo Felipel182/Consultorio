@@ -8,10 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "Dentista")
 public class Dentista {
 
@@ -24,4 +20,44 @@ public class Dentista {
     private String nome, sobrenome;
     private Integer numMatricula;
 
+    public Dentista(String nome, String sobrenome, Integer numMatricula) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.numMatricula = numMatricula;
+    }
+
+    public Dentista() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public Integer getNumMatricula() {
+        return numMatricula;
+    }
+
+    public void setNumMatricula(Integer numMatricula) {
+        this.numMatricula = numMatricula;
+    }
 }

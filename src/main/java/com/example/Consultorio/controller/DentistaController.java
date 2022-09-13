@@ -2,6 +2,7 @@ package com.example.Consultorio.controller;
 
 import com.example.Consultorio.model.Dentista;
 import com.example.Consultorio.service.DentistaService;
+import com.example.Consultorio.service.impl.DentistaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,11 @@ import java.util.List;
 public class DentistaController {
 
     @Autowired
-    DentistaService dentistaService;
+    DentistaServiceImpl dentistaService;
+
+    public DentistaController(DentistaServiceImpl dentistaService) {
+        this.dentistaService = dentistaService;
+    }
 
     @PostMapping("/dentista/adicionar")
     public String salvar(@RequestBody Dentista dentista) throws SQLException{

@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/consulta")
 public class ConsultaController {
-//    @Autowired
+    @Autowired
     private final ConsultaServiceImpl consultaService;
 
     public ConsultaController(ConsultaServiceImpl consultaService) {

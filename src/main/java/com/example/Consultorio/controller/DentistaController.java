@@ -40,7 +40,7 @@ public class DentistaController {
         }
     }
 
-    @DeleteMapping("/excluir/{id}")
+    @DeleteMapping("/excluir?id={id}")
     public void excluir(@RequestParam("id") int id) throws ResourceNotFoundException{
         try {
             dentistaService.excluir(id);
@@ -50,7 +50,7 @@ public class DentistaController {
     }
 
     @PutMapping("/alterar")
-    public String updateDentista(Dentista dentista) throws BadRequestException {
+    public String updateDentista(@RequestBody Dentista dentista) throws BadRequestException {
         try {
             return dentistaService.updateDentista(dentista);
         } catch (Exception e) {

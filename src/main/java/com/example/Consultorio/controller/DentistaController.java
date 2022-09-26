@@ -1,5 +1,7 @@
 package com.example.Consultorio.controller;
 
+import com.example.Consultorio.exceptions.BadRequestException;
+import com.example.Consultorio.exceptions.ResourceNotFoundException;
 import com.example.Consultorio.model.Dentista;
 import com.example.Consultorio.service.DentistaService;
 import com.example.Consultorio.service.impl.DentistaServiceImpl;
@@ -21,23 +23,39 @@ public class DentistaController {
     }
 
     @PostMapping("/adicionar")
-    public String salvar(@RequestBody Dentista dentista) throws SQLException{
-        return dentistaService.salvar(dentista);
+    public String salvar(@RequestBody Dentista dentista) throws BadRequestException {
+        try {
+            return dentistaService.salvar(dentista);
+        } catch (Exception e) {
+            throw new BadRequestException("Sua solicitação não pode ser processada, tente novamente");
+        }
     }
 
     @GetMapping("/dentistas")
-    public List<Dentista> buscarTodos() throws SQLException{
-        return dentistaService.buscarTodos();
+    public List<Dentista> buscarTodos() throws BadRequestException {
+        try {
+            return dentistaService.buscarTodos();
+        } catch (Exception e) {
+            throw new BadRequestException("Sua solicitação não pode ser processada, tente novamente");
+        }
     }
 
     @DeleteMapping("/excluir/{id}")
-    public void excluir(@RequestParam("id") int id) throws SQLException{
-        dentistaService.excluir(id);
+    public void excluir(@RequestParam("id") int id) throws ResourceNotFoundException{
+        try {
+            dentistaService.excluir(id);
+        } catch(Exception e) {
+            throw new ResourceNotFoundException("Não foi encontrado o dentista de id: " + id);
+        }
     }
 
     @PutMapping("/alterar")
-    public String updateDentista(Dentista dentista) throws SQLException {
-        return dentistaService.updateDentista(dentista);
+    public String updateDentista(Dentista dentista) throws BadRequestException {
+        try {
+            return dentistaService.updateDentista(dentista);
+        } catch (Exception e) {
+            throw new BadRequestException("Sua solicitação não pode ser processada, tente novamente");
+        }
     }
 
 

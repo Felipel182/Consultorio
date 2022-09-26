@@ -39,7 +39,7 @@ public class ConsultaController {
     }
 
     @DeleteMapping("/excluir/{id}")
-    public void excluir(@RequestParam("id") int id) throws ResourceNotFoundException{
+    public void excluir(@PathVariable int id) throws ResourceNotFoundException{
         try {
             consultaService.excluir(id);
         } catch(Exception e) {
@@ -48,7 +48,7 @@ public class ConsultaController {
     }
 
     @PutMapping("/alterar")
-    public String updateDentista(ConsultaModel c) throws BadRequestException {
+    public String updateConsulta(@RequestBody ConsultaModel c) throws BadRequestException {
         try {
             return consultaService.updateConsulta(c);
         } catch (Exception e) {

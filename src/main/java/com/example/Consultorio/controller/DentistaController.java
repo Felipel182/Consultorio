@@ -3,12 +3,11 @@ package com.example.Consultorio.controller;
 import com.example.Consultorio.exceptions.BadRequestException;
 import com.example.Consultorio.exceptions.ResourceNotFoundException;
 import com.example.Consultorio.model.Dentista;
-import com.example.Consultorio.service.DentistaService;
 import com.example.Consultorio.service.impl.DentistaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -40,10 +39,11 @@ public class DentistaController {
         }
     }
 
-    @DeleteMapping("/excluir?id={id}")
-    public void excluir(@RequestParam("id") int id) throws ResourceNotFoundException{
+    @DeleteMapping("/excluir/{id}")
+    public ResponseEntity excluir(@PathVariable int id) throws ResourceNotFoundException{
         try {
             dentistaService.excluir(id);
+            return ResponseEntity.ok("Deletado");
         } catch(Exception e) {
             throw new ResourceNotFoundException("Não foi encontrado o dentista de id: " + id);
         }

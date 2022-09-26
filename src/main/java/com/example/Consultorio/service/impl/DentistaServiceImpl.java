@@ -19,11 +19,9 @@ public class DentistaServiceImpl implements DentistaService<Dentista> {
 
     @Override
     public String salvar(Dentista dentista) throws SQLException {
-        if (dentista != null) {
-            dentistaRepository.save(dentista);
-            return "Dentista salvo";
-        }
-        return "Dentista não encontrado";
+       dentistaRepository.save(dentista);
+       return "Dentista salvo";
+
     }
 
     @Override
@@ -33,19 +31,13 @@ public class DentistaServiceImpl implements DentistaService<Dentista> {
 
     @Override
     public String excluir(Integer id) throws SQLException{
-        if (dentistaRepository.findById(id).isPresent()) {
-            dentistaRepository.deleteById(id);
-            return "Dentista excluído";
-        }
-        return "Dentista não encontrado";
+        dentistaRepository.deleteById(id);
+        return "Dentista excluído";
     }
 
     @Override
-    public String updateDentista(Dentista dentista){
-        if (dentista != null && dentistaRepository.findById(dentista.getId()).isPresent()){
-            dentistaRepository.saveAndFlush(dentista);
-            return "Dentista atualizado";
-        }
-        return "Dentista não encontrado";
+    public String updateDentista(Dentista dentista) throws SQLException {
+       dentistaRepository.saveAndFlush(dentista);
+       return "Dentista atualizado";
     };
 }

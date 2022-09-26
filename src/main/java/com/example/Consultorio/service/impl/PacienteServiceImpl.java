@@ -18,11 +18,9 @@ public class PacienteServiceImpl implements PacienteService<PacienteModel> {
 
     @Override
     public String salvar(PacienteModel p) throws SQLException {
-        if (p != null) {
-            pacienteRepository.save(p);
-            return "Paciente salvo";
-        }
-        return "Paciente não encontrado";
+       pacienteRepository.save(p);
+       return "Paciente salvo";
+
     }
 
     @Override
@@ -32,19 +30,15 @@ public class PacienteServiceImpl implements PacienteService<PacienteModel> {
 
     @Override
     public String excluir(Integer id) throws SQLException{
-        if (pacienteRepository.findById(id).isPresent()) {
-            pacienteRepository.deleteById(id);
-            return "Paciente excluído";
-        }
-        return "Paciente não encontrado";
+        pacienteRepository.deleteById(id);
+        return "Paciente excluído";
     }
 
     @Override
-    public String updatePaciente(PacienteModel p){
-        if (p != null && pacienteRepository.findById(p.getId()).isPresent()){
-            pacienteRepository.saveAndFlush(p);
-            return "Paciente atualizado";
-        }
-        return "Paciente não encontrado";
+    public String updatePaciente(PacienteModel p) throws SQLException{
+
+        pacienteRepository.saveAndFlush(p);
+        return "Paciente atualizado";
+
     };
 }

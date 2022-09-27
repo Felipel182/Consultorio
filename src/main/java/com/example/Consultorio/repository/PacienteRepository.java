@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface PacienteRepository extends JpaRepository<PacienteModel, Integer> {
 
     @Query(value = "SELECT Paciente p FROM Paciente WHERE p.id = ?1", nativeQuery = true)
-    Optional<PacienteModel> findPacienteByName(String name);
+    Optional<PacienteModel> findById(Integer id);
+//    Optional<PacienteModel> findPacienteByName(String name);
 
 }
